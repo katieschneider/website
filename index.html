@@ -125,7 +125,7 @@ $(document).ready(function () {
 <p>With SQL, you can filter columns with SELECT and rows with WHERE. Let’s try an example with the Lahman baseball database. First, we need to load the appropriate packages.</p>
 <pre class="r"><code>library(Lahman)
 library(sqldf)</code></pre>
-<p>NOw, suppose we would like to see the homerun totals for the 1927 Yankees. We could write the following:</p>
+<p>Now, suppose we would like to see the homerun totals for the 1927 Yankees. We could write the following:</p>
 <pre class="r"><code>query&lt;-&quot;SELECT playerID,yearID,teamID,HR FROM Batting
 WHERE teamID='NYA' and yearID=1927&quot;
 sqldf(query)</code></pre>
@@ -375,6 +375,34 @@ sqldf(query)</code></pre>
 ## 63 holmeto01    BSN   1945 28  9 636
 ## 64 boudrlo01    CLE   1948 18  9 560
 ## 65 mitchda01    CLE   1952  5  9 511</code></pre>
+<p>Let’s make a query for September 12 class,</p>
+<pre class="r"><code>query&lt;-&quot;SELECT playerID,HR FROM Batting
+ WHERE playerID='ruthba01'&quot;
+
+sqldf(query)</code></pre>
+<pre><code>##    playerID HR
+## 1  ruthba01  0
+## 2  ruthba01  4
+## 3  ruthba01  3
+## 4  ruthba01  2
+## 5  ruthba01 11
+## 6  ruthba01 29
+## 7  ruthba01 54
+## 8  ruthba01 59
+## 9  ruthba01 35
+## 10 ruthba01 41
+## 11 ruthba01 46
+## 12 ruthba01 25
+## 13 ruthba01 47
+## 14 ruthba01 60
+## 15 ruthba01 54
+## 16 ruthba01 46
+## 17 ruthba01 49
+## 18 ruthba01 46
+## 19 ruthba01 41
+## 20 ruthba01 34
+## 21 ruthba01 22
+## 22 ruthba01  6</code></pre>
 </div>
 </div>
 

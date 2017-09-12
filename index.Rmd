@@ -12,7 +12,7 @@ library(Lahman)
 library(sqldf)
 ```
 
-NOw, suppose we would like to see the homerun totals for the 1927 Yankees. We could write the following:
+Now, suppose we would like to see the homerun totals for the 1927 Yankees. We could write the following:
 
 ```{r}
 query<-"SELECT playerID,yearID,teamID,HR FROM Batting
@@ -62,6 +62,15 @@ sqldf(query)
 query<-"SELECT playerID,teamID,yearID,HR,SO,AB FROM Batting
 WHERE SO<10 and AB>=400
 ORDER BY SO"
+sqldf(query)
+```
+
+Let's make a query for September 12 class,
+
+```{r}
+query<-"SELECT playerID,HR FROM Batting
+ WHERE playerID='ruthba01'"
+
 sqldf(query)
 ```
 
