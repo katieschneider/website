@@ -122,6 +122,9 @@ $(document).ready(function () {
 
 <div id="filtering-columns-and-rows" class="section level2">
 <h2>Filtering Columns and Rows</h2>
+</div>
+<div id="section" class="section level1">
+<h1>——————————————————————-</h1>
 <p>With SQL, you can filter columns with SELECT and rows with WHERE. Let’s try an example with the Lahman baseball database. First, we need to load the appropriate packages.</p>
 <pre class="r"><code>library(Lahman)
 library(sqldf)</code></pre>
@@ -155,14 +158,11 @@ sqldf(query)</code></pre>
 ## 23 shockur01   1927    NYA  0
 ## 24 thomamy01   1927    NYA  0
 ## 25  weraju01   1927    NYA  1</code></pre>
+<div id="continuing-to-practice-writing-queries-and-narrowing-searches-through-multiple-in-class-examples-" class="section level5">
+<h5>Continuing to practice writing queries and narrowing searches through multiple in-class examples-</h5>
 </div>
-<div id="examples-from-sep.-07-class" class="section level1">
-<h1>Examples from Sep. 07 Class</h1>
-</div>
-<div id="section" class="section level1">
-<h1>———————————————</h1>
-<div id="example-one" class="section level2">
-<h2>example one</h2>
+<div id="example-one" class="section level4">
+<h4>Example One</h4>
 <pre class="r"><code>query&lt;-&quot;SELECT playerID,yearID,teamID,HR FROM Batting
 WHERE teamID='NYA' and HR&gt;=40&quot;
 sqldf(query)</code></pre>
@@ -198,8 +198,8 @@ sqldf(query)</code></pre>
 ## 29 grandcu01   2011    NYA 41
 ## 30 grandcu01   2012    NYA 43</code></pre>
 </div>
-<div id="example-two" class="section level2">
-<h2>example two</h2>
+<div id="example-two" class="section level4">
+<h4>Example Two</h4>
 <pre class="r"><code>query&lt;-&quot;SELECT playerID,teamID,yearID,HR,SO FROM Batting 
 WHERE HR&gt;=40 and SO&lt;60&quot;
 sqldf(query)</code></pre>
@@ -237,8 +237,8 @@ sqldf(query)</code></pre>
 ## 31 pujolal01    SLN   2004 46 52
 ## 32 pujolal01    SLN   2006 49 50</code></pre>
 </div>
-<div id="example-three" class="section level2">
-<h2>example three</h2>
+<div id="example-three" class="section level4">
+<h4>Example Three</h4>
 <pre class="r"><code>query&lt;-&quot;SELECT playerID,teamID,yearID,HR FROM Batting
 WHERE yearID&gt;1969 and yearID&lt;1980 and HR&gt;30 and teamID='PHI'&quot;
 sqldf(query)</code></pre>
@@ -253,15 +253,15 @@ sqldf(query)</code></pre>
 ## 8 luzingr01    PHI   1978 35
 ## 9 schmimi01    PHI   1979 45</code></pre>
 </div>
-<div id="example-four" class="section level2">
-<h2>example four</h2>
-<div id="introducing-order-by" class="section level3">
-<h3>Introducing ORDER BY</h3>
-</div>
+<div id="introducing-order-by" class="section level2">
+<h2>Introducing ‘Order By’</h2>
+<p>The command ORDER BY in a query can organize the information in the rows and columns by whichever numerical statistic you chose. It will default to listing the smallest number to largest, to reverse that type DESC at the end of the query. In the example below we chose to list homeruns in decsending order- meaning the first on the list is the player with the most homeruns</p>
 </div>
 </div>
 <div id="section-1" class="section level1">
-<h1>—————</h1>
+<h1>———————————————</h1>
+<div id="example-one-1" class="section level4">
+<h4>Example One</h4>
 <pre class="r"><code>query&lt;-&quot;SELECT playerID,teamID,yearID,HR FROM Batting
 WHERE HR&gt;50
 ORDER BY HR DESC&quot;
@@ -303,8 +303,9 @@ sqldf(query)</code></pre>
 ## 34  mayswi01    NY1   1955 51
 ## 35 fieldce01    DET   1990 51
 ## 36 jonesan01    ATL   2005 51</code></pre>
-<div id="example-five" class="section level2">
-<h2>example five</h2>
+</div>
+<div id="example-two-1" class="section level4">
+<h4>Example Two</h4>
 <pre class="r"><code>query&lt;-&quot;SELECT playerID,teamID,yearID,HR,SO,AB FROM Batting
 WHERE SO&lt;10 and AB&gt;=400
 ORDER BY SO&quot;
@@ -375,7 +376,8 @@ sqldf(query)</code></pre>
 ## 63 holmeto01    BSN   1945 28  9 636
 ## 64 boudrlo01    CLE   1948 18  9 560
 ## 65 mitchda01    CLE   1952  5  9 511</code></pre>
-<p>Let’s make a query for September 12 class,</p>
+<div id="today-in-class-we-reviewed-previsouly-taught-queries--here-is-one-example-from-sept.-12" class="section level5">
+<h5>Today in class, we reviewed previsouly taught queries- here is one example from Sept. 12</h5>
 <pre class="r"><code>query&lt;-&quot;SELECT playerID,HR FROM Batting
  WHERE playerID='ruthba01'&quot;
 
@@ -403,6 +405,7 @@ sqldf(query)</code></pre>
 ## 20 ruthba01 34
 ## 21 ruthba01 22
 ## 22 ruthba01  6</code></pre>
+</div>
 </div>
 </div>
 

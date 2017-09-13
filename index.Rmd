@@ -4,6 +4,7 @@ output: html_document
 ---
 
 ## Filtering Columns and Rows
+#-------------------------------------------------------------------
 
 With SQL, you can filter columns with SELECT and rows with WHERE. Let's try an example with the Lahman baseball database. First, we need to load the appropriate packages. 
 
@@ -20,17 +21,16 @@ WHERE teamID='NYA' and yearID=1927"
 sqldf(query)
 ```
 
-# Examples from Sep. 07 Class
-#---------------------------------------------
 
-## example one
+##### Continuing to practice writing queries and narrowing searches through multiple in-class examples-
+#### Example One
 ```{r}
 query<-"SELECT playerID,yearID,teamID,HR FROM Batting
 WHERE teamID='NYA' and HR>=40"
 sqldf(query)
 ```
 
-## example two 
+#### Example Two 
 
 ```{r}
 query<-"SELECT playerID,teamID,yearID,HR,SO FROM Batting 
@@ -38,7 +38,7 @@ WHERE HR>=40 and SO<60"
 sqldf(query)
 ```
 
-## example three
+#### Example Three
 
 ```{r}
 query<-"SELECT playerID,teamID,yearID,HR FROM Batting
@@ -46,9 +46,13 @@ WHERE yearID>1969 and yearID<1980 and HR>30 and teamID='PHI'"
 sqldf(query)
 ```
 
-## example four
-### Introducing ORDER BY
-#---------------
+## Introducing 'Order By'
+The command ORDER BY in a query can organize the information in the rows and columns by whichever numerical statistic you chose. 
+It will default to listing the smallest number to largest, to reverse that type DESC at the end of the query.
+In the example below we chose to list homeruns in decsending order- meaning the first on the list is the player with the most homeruns
+
+#---------------------------------------------
+#### Example One
 
 ```{r}
 query<-"SELECT playerID,teamID,yearID,HR FROM Batting
@@ -57,7 +61,7 @@ ORDER BY HR DESC"
 sqldf(query)
 ```
 
-## example five
+#### Example Two
 ```{r}
 query<-"SELECT playerID,teamID,yearID,HR,SO,AB FROM Batting
 WHERE SO<10 and AB>=400
@@ -65,7 +69,7 @@ ORDER BY SO"
 sqldf(query)
 ```
 
-Let's make a query for September 12 class,
+##### Today in class, we reviewed previsouly taught queries- here is one example from Sept. 12
 
 ```{r}
 query<-"SELECT playerID,HR FROM Batting
