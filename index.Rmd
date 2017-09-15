@@ -78,3 +78,81 @@ query<-"SELECT playerID,HR FROM Batting
 sqldf(query)
 ```
 
+## Aggregation
+Aggregation is grouping. It is the narrowing of queries previously exercised. It is done with the command "GROUP BY" when using this you can group together any particular statiscal row, in the first example below we grouped by playerID, looking for Babe Ruth's summed up homeruns. The sum(_) command was also introduced simply adding stats together to organize the column,
+
+#---------------------------------------------------
+
+#### Example One
+
+```{r}
+query<-"SELECT playerID,sum(HR) FROM Batting 
+WHERE playerID='ruthba01'
+GROUP BY playerID"
+
+sqldf(query)
+```
+
+#### Example Two 
+In this one it was discovered that after using the command GROUP BY if you are looking for the WHERE specification you use HAVING instead
+
+```{r}
+query<-"SELECT playerID,sum(HR) FROM Batting
+GROUP BY playerID
+HAVING sum(HR)>=600
+ORDER BY sum(HR) DESC"
+
+sqldf(query)
+```
+
+#### Example Three
+This one used avg() instead of sum- same idea
+
+```{r}
+query<-"SELECT playerID,avg(HR) FROM Batting 
+GROUP BY playerID
+HAVING avg(HR)>30
+ORDER BY avg(HR) DESC"
+
+sqldf(query)
+```
+
+## Joins
+The INNER JOIN command will join multiple tables together. Today we wanted to join columns with player information to the already used Batting table. Making the table produced more legible as in example one the players first and last name were presented rather than the playerID,
+
+#---------------------------------------------------
+
+#### Example One
+Since the phrase playerID is present in both tables we needed to clarify where we wanted the playerID in the last line to come from
+```{r}
+query<-"SELECT namefirst,namelast,teamID,yearID,HR
+FROM Batting INNER JOIN Master
+ON Batting.playerID=Master.playerID
+WHERE Batting.playerID='ruthba01'"
+
+sqldf(query)
+```
+
+#### Example Two
+
+```{r}
+query<-"SELECT nameFirst,nameLast,teamID,yearID,HR
+FROM Batting INNER JOIN Master
+ON Batting.playerID=Master.playerID
+WHERE HR>50
+ORDER BY HR DESC"
+
+sqldf(query)
+```
+
+#### Example Three
+In this one we had to clarify which table we wanted the teamID and yearID from. 
+```{r}
+query<-"SELECT playerID,name,Batting.yearID,Batting.HR
+FROM Batting INNER JOIN Teams 
+ON Batting.teamID=teams.teamID AND Batting.yearID=Teams.yearID
+WHERE playerID='ruthba01'"
+
+sqldf(query)
+```
+
