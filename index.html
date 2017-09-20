@@ -587,6 +587,26 @@ sqldf(query)</code></pre>
 ## 21 ruthba01 New York Yankees   1934 22
 ## 22 ruthba01    Boston Braves   1935  6</code></pre>
 </div>
+<div id="example-four" class="section level4">
+<h4>Example Four</h4>
+<p>This will be the last thing for this website</p>
+<pre class="r"><code>query&lt;-&quot;SELECT nameFirst,nameLast,avg(salary)
+FROM Salaries INNER JOIN Master
+ON Salaries.playerID=Master.playerID
+GROUP BY Salaries.playerID
+HAVING nameFirst='Bob' AND avg(salary)&gt;1000000&quot;
+
+sqldf(query)</code></pre>
+<pre><code>##   nameFirst  nameLast avg(salary)
+## 1       Bob     Boone     1047580
+## 2       Bob    Horner     1416667
+## 3       Bob     Howry     1804583
+## 4       Bob     Ojeda     1035926
+## 5       Bob   Stanley     1067500
+## 6       Bob Tewksbury     1288182
+## 7       Bob     Welch     1930417
+## 8       Bob   Wickman     2635813</code></pre>
+</div>
 </div>
 
 

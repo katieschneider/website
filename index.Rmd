@@ -156,3 +156,15 @@ WHERE playerID='ruthba01'"
 sqldf(query)
 ```
 
+#### Example Four
+This will be the last thing for this website
+```{r}
+query<-"SELECT nameFirst,nameLast,avg(salary)
+FROM Salaries INNER JOIN Master
+ON Salaries.playerID=Master.playerID
+GROUP BY Salaries.playerID
+HAVING nameFirst='Bob' AND avg(salary)>1000000"
+
+sqldf(query)
+```
+
